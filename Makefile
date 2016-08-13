@@ -8,6 +8,9 @@ test: test_main.c shull.o ll.o
 	$(CC) $(CFLAGS) -o $@ $^
 	test -d data || mkdir data
 
+shull.o: shull.c shull.h ll.h
+	$(CC) $(CFLAGS) -c $<
+
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -c $<
 
@@ -15,3 +18,7 @@ test: test_main.c shull.o ll.o
 clean:
 	$(RM) test $(objs) || true
 
+ll.c ll.h:
+	test -d linked_list || git clone https://github.com/tlvb/linked_list
+	test -f ll.c || ln -s linked_list/ll.c
+	test -f ll.h || ln -s linked_list/ll.h
