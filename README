@@ -1,0 +1,3 @@
+The algorithm used in this delaunay triangulation implementation
+is the one described by David Sinclair in "S-hull: a fast radial
+sweep-hull routine for Delaunay triangulation" (arXiv:1604.01428)
