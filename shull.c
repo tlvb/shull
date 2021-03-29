@@ -192,6 +192,12 @@ void add_point_to_hull(sh_triangulation_data *td, sh_point *p) { /*{{{*/
 		first_hid = ll_cut_after(last_vis);
 		last_hid = ll_cut_before(first_vis);
 	} /*}}}*/
+	if (first_vis==NULL)
+	{
+		fprintf(stderr, "Error, cannot find hull edges visisble to the point to add\n");
+		fprintf(stderr, "       probably the point set contains duplicate points\n");
+		exit(1);
+	}
 	sh_edge *e0 = NULL;
 	sh_edge *e1 = NULL;
 	for (ll_node *n=first_vis; n!=NULL; n=NEXT(n)) { /*{{{*/
